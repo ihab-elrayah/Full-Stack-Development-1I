@@ -1,0 +1,10 @@
+ ng generate class user
+export class User {
+email: string;
+name: string;
+}
+
+ng generate class authresponse
+export class AuthResponse {
+token: string;
+}

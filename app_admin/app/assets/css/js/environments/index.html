@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travlr Getaways Admin</title>
+</head>
+<body>
+    <header>
+        <h1>Travlr Getaways Admin</h1>
+    </header>
+    <nav>
+        <!-- Navigation links can go here -->
+    </nav>
+    <section>
+        <h2>About Us</h2>
+        <p>This is a platform for Travlr Getaways Admin< to share their experiences, tips, and stories from around the world. Whether you're looking for advice on your next trip or want to share your own travel tales, you've come to the right place.</p>
+    </section>
+    <section>
+        <h2>Latest Stories</h2>
+        <article>
+            <h3>Surviving the Sahara: A Travlr Getaways Admin<'s Guide</h3>
+            <p>Essential tips for navigating the challenges of the Sahara desert and making the most of this incredible adventure.</p>
+        </article>
+    </section>
+    <footer>
+        <p>Contact us at info@TravlrGetawaysAdmin<.com</p>
+    </footer>
+
+    ng generate component navbar
+navbar.component.html:
+<nav class="navbar navbar-expand navbar-light bg-light">
+ <a class="navbar-brand" href="#"><img
+src="/assets/images/logo.png"></a>
+ <button class="navbar-toggler" type="button" datatoggle="collapse" data-target="#navbarNavAltMarkup" ariacontrols="navbarNavAltMarkup" aria-expanded="false" arialabel="Toggle navigation">
+ <span class="navbar-toggler-icon"></span>
+ </button>
+ <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+ <div class="navbar-nav">
+ <a class="nav-item nav-link active" routerLink="listtrips">Trips<span class=" sr-only ">(current)</span></a>
+ </div>
+ </div>
+ <div class="navbar-end ">
+ <a class="navbar-item" routerLink="login"
+*ngIf="!isLoggedIn()">
+ <span class="has-icon-left">Log In</span>
+ </a>
+ <a class="navbar-item" (click)="onLogout()"
+*ngIf="isLoggedIn()">
+ <span class="has-icon-left ">Log Out</span>
+ </a>
+ </div>
+</nav>
+navbar.component.ts:
+import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from
+'../services/authentication.service';
+@Component({
+selector: 'app-navbar',
+templateUrl: './navbar.component.html',
+styleUrls: ['./navbar.component.css']
+})
+export class NavbarComponent implements OnInit {
+constructor(
+ private authenticationService: AuthenticationService
+) { }
+ngOnInit() { }
+public isLoggedIn(): boolean {
+ return this.authenticationService.isLoggedIn();
+}
+private onLogout(): void {
+ return this.authenticationService.logout();
+}
+}
+ng generate component home
+<div class="container" *ngIf="!isLoggedIn()">Please login to
+continue</div> 
+</body>
+</html>
